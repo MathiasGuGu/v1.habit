@@ -11,12 +11,12 @@ import { CreateHabitDrawer } from "./Create_habit_drawer";
 
 const HabitService = () => {
   const { data: habitboards, refetch } = useQuery({
+    
     queryFn: () => getAllHabitboards(),
     queryKey: ["habitboards"],
   });
 
   const { mutate } = useMutation({
-    
     mutationFn: ({ title, description }: { title: string; description: string }) =>
       createHabitboard(title, description),
     mutationKey: ["createHabitboard"],
