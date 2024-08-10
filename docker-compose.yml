@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  app:
+    platform: "linux/amd64"
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_CLIENTVAR: "clientvar"
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    image: t3-app
+    environment:
+      - DATABASE_URL="postgresql://postgres.dzecgltfkoqvkaqphrau:!!Habbo2002!!@aws-0-eu-central-1.pooler.supabase.com:6543/postgres"
+      - CLERK_PUBLISHABLE_KEY=pk_test_ZnJhbmstbG9uZ2hvcm4tNjcuY2xlcmsuYWNjb3VudHMuZGV2JA
+      - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_ZnJhbmstbG9uZ2hvcm4tNjcuY2xlcmsuYWNjb3VudHMuZGV2JA
+      - CLERK_SECRET_KEY=sk_test_s8x6iUE16QGlMB8HFpSPiGQMls878gtugp7PyaNV7O
+      - NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+      - NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
