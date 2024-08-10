@@ -58,8 +58,6 @@ const HabitCard = ({
     createdAt: Date;
   };
 }) => {
-  const [completedToday, setCompletedToday] = useState<boolean>(false);
-  const [hasToday, setHasToday] = useState<boolean>(false);
   const { habitdays, updateDay, createDay, refetch } = HabitCardService(
     habitboard.id,
   );
@@ -72,35 +70,13 @@ const HabitCard = ({
     };
   });
 
-  useEffect(() => {
-    if (!habitdays) return;
-    setHasToday(() => {
-      return (
-        habitdays.map((day) => {
-          const today = new Date().toISOString().split("T")[0];
-          return day.day === today;
-        }).length > 0
-      );
-    });
-
-    setCompletedToday(() => {
-      return (
-        habitdays.map((day) => {
-          const today = new Date().toISOString().split("T")[0];
-          return day.day === today && day.completed;
-        }).length > 0
-      );
-    });
-  }, [habitdays]);
+ 
 
 
-  console.log(completedToday);
 
   return (
     <Card className="relative h-[400px] min-h-[400px] max-w-[400px]">
       <Checkbox
-        defaultChecked={completedToday ? true : false}
-        disabled={completedToday}
         className="absolute right-6 top-6 size-10 rounded-full disabled:pointer-events-none"
         onCheckedChange={async (checked) => {
           if (checked) {

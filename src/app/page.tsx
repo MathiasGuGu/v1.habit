@@ -1,6 +1,5 @@
-import Link from "next/link";
 
-import { api, HydrateClient } from "@/trpc/server";
+import { HydrateClient } from "@/trpc/server";
 import HabitCardList from "./_components/Habits/Habit_card_list";
 
 export default async function Home() {

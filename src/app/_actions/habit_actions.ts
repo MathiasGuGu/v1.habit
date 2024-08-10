@@ -4,12 +4,11 @@ import { api } from "@/trpc/server";
 
 export async function getAllHabitboards() {
   const habitboards = await api.habit.getAll();
-  console.log(habitboards);
   return habitboards;
 }
 
 export async function createHabitboard(title: string, description: string) {
-  return await api.habit.create({ title, description });
+  return await api.habit.createHabitboard({ title, description });
 }
 
 export async function createHabitDay(habitboardId: number) {

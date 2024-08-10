@@ -20,7 +20,7 @@ export const habitRouter = createTRPCRouter({
       return habitDaysForHabitboard ?? null;
     }),
 
-  create: publicProcedure
+  createHabitboard: publicProcedure
     .input(
       z.object({ title: z.string().min(1), description: z.string().min(1) }),
     )
